@@ -26,6 +26,79 @@ pip install torch==1.6.0 torchvision==0.7.0
 
 Above, we install PyTorch version 1.6 with CUDA 10.2. 
 
+## Installation & Usage (Pip)
+
+You can install this package directly from GitHub:
+
+```bash
+pip install git+https://github.com/EthanLyu30/hover-net-pip.git
+```
+
+### Python API Usage
+
+After installation, you can import `hover_net` in your python scripts.
+
+**1. Load Model**
+
+```python
+import hover_net
+import torch
+
+# Initialize the model
+# mode='original' or 'fast'
+model = hover_net.HoVerNet(input_ch=3, nr_types=5, mode='fast')
+
+# Load weights
+checkpoint = torch.load('path/to/checkpoint.tar')
+model.load_state_dict(checkpoint['desc'])
+model.eval()
+```
+
+**2. Run Inference (Tile Mode)**
+
+```python
+from hover_net.infer import TileInferManager
+
+infer_manager = TileInferManager(
+    input_dir="/path/to/input_images",
+    output_dir="/path/to/output_dir",
+    model_path="/path/to/checkpoint.tar",
+    model_mode="fast",
+    nr_types=5,
+    # Optional arguments
+    mem_usage=0.2,
+    draw_dot=False,
+    save_qupath=False,
+    save_raw_map=False,
+)
+
+# Run inference
+infer_manager.process_file_list(run_args={})
+```
+
+**3. Run Inference (WSI Mode)**
+
+```python
+from hover_net.infer import WSIInferManager
+
+infer_manager = WSIInferManager(
+    input_dir="/path/to/wsi_images",
+    output_dir="/path/to/output_dir",
+    model_path="/path/to/checkpoint.tar",
+    model_mode="fast",
+    nr_types=5,
+    # WSI specific arguments
+    proc_mag=40,
+    ambiguous_size=128,
+    chunk_shape=10000,
+    tile_shape=2048,
+    save_thumb=False,
+    save_mask=False,
+)
+
+infer_manager.process_file_list(run_args={})
+```
+
 ## Repository Structure
 
 Below are the main directories in the repository: 
