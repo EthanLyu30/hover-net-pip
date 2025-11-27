@@ -139,7 +139,8 @@ def msge_loss(true, pred, focus):
             device="cuda",
             requires_grad=False,
         )
-        h, v = torch.meshgrid(h_range, v_range)
+        # indexing='ij' is the default for torch < 1.10, explicit is better for 2.x
+        h, v = torch.meshgrid(h_range, v_range, indexing='ij')
         kernel_h = h / (h * h + v * v + 1.0e-15)
         kernel_v = v / (h * h + v * v + 1.0e-15)
         return kernel_h, kernel_v
