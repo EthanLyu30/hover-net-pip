@@ -67,7 +67,7 @@ if __name__ == "__main__":
         5: ("no-neo", (255, 165, 0)),  # non-neoplastic epithelial
     }
 
-    patterning = lambda x: re.sub("([\[\]])", "[\\1]", x)
+    patterning = lambda x: re.sub(r"([\[\]])", "[\\1]", x)
     code_name_list = glob.glob(patterning("%s/*.json" % root_dir))
     code_name_list = [pathlib.Path(v).stem for v in code_name_list]
     code_name_list.sort()

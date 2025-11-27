@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: hover_net
+Version: 1.0.0
+Summary: HoverNet: Simultaneous Segmentation and Classification of Nuclei in Multi-Tissue Histology Images
+Author: vqdang
+License-File: LICENSE
+Requires-Dist: docopt>=0.6.2
+Requires-Dist: future>=0.18.2
+Requires-Dist: imgaug>=0.4.0
+Requires-Dist: matplotlib>=3.3.0
+Requires-Dist: numpy>=1.19.1
+Requires-Dist: opencv-python>=4.3.0.36
+Requires-Dist: pandas>=1.1.0
+Requires-Dist: pillow>=7.2.0
+Requires-Dist: psutil>=5.7.3
+Requires-Dist: scikit-image>=0.17.2
+Requires-Dist: scikit-learn>=0.23.1
+Requires-Dist: scipy>=1.5.2
+Requires-Dist: tensorboard>=2.3.0
+Requires-Dist: tensorboardx>=2.1
+Requires-Dist: termcolor>=1.1.0
+Requires-Dist: tqdm>=4.48.0
